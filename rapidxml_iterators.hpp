@@ -10,7 +10,6 @@
 
 namespace rapidxml
 {
-
     //! Iterator of child nodes of xml_node
     template<class Ch>
     class node_iterator
@@ -56,7 +55,7 @@ namespace rapidxml
         node_iterator operator++(int)
         {
             node_iterator tmp = *this;
-            ++this;
+            ++(*this);
             return tmp;
         }
 
@@ -70,7 +69,7 @@ namespace rapidxml
         node_iterator operator--(int)
         {
             node_iterator tmp = *this;
-            ++this;
+            --(*this);
             return tmp;
         }
 
@@ -79,9 +78,9 @@ namespace rapidxml
             return m_node == rhs.m_node;
         }
 
-        bool operator !=(const node_iterator<Ch> &rhs)
+        bool valid()
         {
-            return m_node != rhs.m_node;
+            return m_node;
         }
 
     private:
